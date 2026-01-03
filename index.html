@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇮🇩 CYBER indonet — Cryptor Pro</title>
+    <style>
+        /* [KEEP ALL PREVIOUS STYLES] */
+        
+        /* NEW STYLES FOR TEXT PREVIEW */
+        .preview-area {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            border: 2px solid #ff8c00;
+        }
+        
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .preview-header h3 {
+            color: #ff8c00;
+        }
+        
+        .copy-btn {
+            padding: 8px 15px;
+            background: #00ccff;
+            color: black;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .preview-content {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            background: black;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border: 1px solid #444;
+        }
+        
+        .hex-view {
+            color: #00ff88;
+        }
+        
+        .ascii-view {
+            color: #ffcc00;
+            margin-top: 10px;
+        }
+        
+        .mode-switcher {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .mode-tab {
+            padding: 10px 20px;
+            background: #333;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .mode-tab.active {
+            background: #ff0040;
+        }
+        
+        .text-input-area {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ccff;
+            border-radius: 10px;
+            color: white;
+            font-family: monospace;
+            font-size: 14px;
+            margin-bottom: 20px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 CYBER indonet CRYPTOR PRO</h1>
+            <div class="tagline">Encrypt/Decrypt File & Text - Zero Error Guarantee</div>
+        </div>
+        
+        <!-- MODE SWITCHER: FILE or TEXT -->
+        <div class="mode-switcher">
+            <button id="fileModeBtn" class="mode-tab active">📁 FILE MODE</button>
+            <button id="textModeBtn" class="mode-tab">📝 TEXT MODE</button>
+        </div>
+        
+        <!-- FILE MODE SECTION -->
+        <div id="fileSection">
+            <div class="mode-selector">
+                <button id="encryptBtn" class="mode-btn active">🔒 ENCRYPT FILE</button>
+                <button id="decryptBtn" class="mode-btn">🔓 DECRYPT FILE</button>
+            </div>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <h2 id="uploadText">KLIK ATAU DROP FILE DI SINI</h2>
+                <p id="fileInfo">Belum ada file dipilih</p>
+                <input type="file" id="fileInput">
+            </div>
+        </div>
+        
+        <!-- TEXT MODE SECTION (HIDDEN BY DEFAULT) -->
+        <div id="textSection" style="display: none;">
+            <div class="mode-selector">
+                <button id="encryptTextBtn" class="mode-btn active">🔒 ENCRYPT TEXT</button>
+                <button id="decryptTextBtn" class="mode-btn">🔓 DECRYPT TEXT</button>
+            </div>
+            
+            <textarea id="textInput" class="text-input-area" placeholder="Masukkan text di sini..."></textarea>
+        </div>
+        
+        <div class="key-area">
+            <label for="keyInput">🔑 ENCRYPTION KEY:</label>
+            <input type="text" id="keyInput" placeholder="Masukkan kunci (minimal 16 karakter)">
+            <button id="generateKey" class="generate-key">🎲 GENERATE RANDOM KEY</button>
+            <div id="keyStrength" style="margin-top: 10px; font-size: 0.9rem; color: #aaa;"></div>
+        </div>
+        
+        <button id="processBtn" class="action-btn">🚀 PROSES ENCRYPT</button>
+        
+        <!-- TEXT PREVIEW AREA -->
+        <div class="preview-area" id="previewArea">
+            <div class="preview-header">
+                <h3>👁️ PREVIEW HASIL:</h3>
+                <button id="copyBtn" class="copy-btn">📋 COPY</button>
+            </div>
+            <div class="preview-content" id="previewContent">
+                <!-- Hasil akan tampil di sini -->
+            </div>
+            <div id="checksumInfo" style="margin-top: 10px; color: #00ff88; font-size: 0.9rem;"></div>
+        </div>
+        
+        <!-- RESULT AREA (for file download) -->
+        <div class="result-area" id="resultArea">
+            <h3>✅ FILE SELESAI DIPROSES!</h3>
+            <p id="resultText">File sudah siap didownload</p>
+            <a id="downloadLink" download>
+                <button class="action-btn" style="background: linear-gradient(90deg, #ff0040, #ff3300); color: white;">
+                    ⬇️ DOWNLOAD FILE
+                </button>
+            </a>
+        </div>
+        
+        <div class="status" id="status"></div>
+        
+        <div class="footer">
+            🇮🇩 CYBER indonet Frostwolf Edition | 100% Error-Proof | Checksum Verified
+        </div>
+    </div>
+
+    <script src="script_pro.js"></script>
+</body>
+</html>
